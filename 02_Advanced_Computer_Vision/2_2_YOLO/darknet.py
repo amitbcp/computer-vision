@@ -22,16 +22,16 @@ class YoloLayer(nn.Module):
     def forward(self, output, nms_thresh):
         self.thresh = nms_thresh
         masked_anchors = []
-            
+
         for m in self.anchor_mask:
             masked_anchors += self.anchors[m*self.anchor_step:(m+1)*self.anchor_step]
-                
+
         masked_anchors = [anchor/self.stride for anchor in masked_anchors]
         boxes = get_region_boxes(output.data, self.thresh, self.num_classes, masked_anchors, len(self.anchor_mask))
-            
+
         return boxes
 
-    
+
 class Upsample(nn.Module):
     def __init__(self, stride=2):
         super(Upsample, self).__init__()
@@ -71,17 +71,17 @@ class Darknet(nn.Module):
         self.header = torch.IntTensor([0,0,0,0])
         self.seen = 0
 
-    def forward(self, x, nms_thresh):            
+    def forward(self, x, nms_thresh):
         ind = -2
         self.loss = None
         outputs = dict()
         out_boxes = []
-        
+
         for block in self.blocks:
             ind = ind + 1
             if block['type'] == 'net':
                 continue
-            elif block['type'] in ['convolutional', 'upsample']: 
+            elif block['type'] in ['convolutional', 'upsample']:
                 x = self.models[ind](x)
                 outputs[ind] = x
             elif block['type'] == 'route':
@@ -108,16 +108,16 @@ class Darknet(nn.Module):
                 out_boxes.append(boxes)
             else:
                 print('unknown type %s' % (block['type']))
-            
+
         return out_boxes
-    
+
 
     def print_network(self):
         print_cfg(self.blocks)
 
     def create_network(self, blocks):
         models = nn.ModuleList()
-    
+
         prev_filters = 3
         out_filters =[]
         prev_stride = 1
@@ -191,7 +191,7 @@ class Darknet(nn.Module):
                 models.append(yolo_layer)
             else:
                 print('unknown type %s' % (block['type']))
-    
+
         return models
 
     def load_weights(self, weightfile):
@@ -229,15 +229,15 @@ class Darknet(nn.Module):
                 pass
             else:
                 print('unknown type %s' % (block['type']))
-            
+
             percent_comp = (counter / len(self.blocks)) * 100
 
             print('Loading weights. Please Wait...{:.2f}% Complete'.format(percent_comp), end = '\r', flush = True)
 
             counter += 1
 
-            
-            
+
+
 def convert2cpu(gpu_matrix):
     return torch.FloatTensor(gpu_matrix.size()).copy_(gpu_matrix)
 
@@ -276,7 +276,7 @@ def get_region_boxes(output, conf_thresh, num_classes, anchors, num_anchors, onl
     cls_max_confs = cls_max_confs.view(-1)
     cls_max_ids = cls_max_ids.view(-1)
 
-    
+
     sz_hw = h*w
     sz_hwa = sz_hw*num_anchors
     det_confs = convert2cpu(det_confs)
@@ -300,7 +300,7 @@ def get_region_boxes(output, conf_thresh, num_classes, anchors, num_anchors, onl
                         conf =  det_confs[ind]
                     else:
                         conf = det_confs[ind] * cls_max_confs[ind]
-    
+
                     if conf > conf_thresh:
                         bcx = xs[ind]
                         bcy = ys[ind]
@@ -330,7 +330,7 @@ def parse_cfg(cfgfile):
         line = line.rstrip()
         if line == '' or line[0] == '#':
             line = fp.readline()
-            continue        
+            continue
         elif line[0] == '[':
             if block:
                 blocks.append(block)
@@ -432,7 +432,7 @@ def print_cfg(blocks):
         else:
             print('unknown type %s' % (block['type']))
 
-            
+
 def load_conv(buf, start, conv_model):
     num_w = conv_model.weight.numel()
     num_b = conv_model.bias.numel()
