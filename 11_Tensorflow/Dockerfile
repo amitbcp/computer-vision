@@ -4,17 +4,17 @@ MAINTAINER @joshuacook
 
 # Pick up some TF dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
-        build-essential \
-        curl \
-        libfreetype6-dev \
-        libpng12-dev \
-        libzmq3-dev \
-        pkg-config \
-        python3-dev \
-        rsync \
-        software-properties-common \
-        unzip \
-        && \
+    build-essential \
+    curl \
+    libfreetype6-dev \
+    libpng12-dev \
+    libzmq3-dev \
+    pkg-config \
+    python3-dev \
+    rsync \
+    software-properties-common \
+    unzip \
+    && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
