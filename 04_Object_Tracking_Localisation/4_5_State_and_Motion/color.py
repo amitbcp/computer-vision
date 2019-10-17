@@ -14,8 +14,9 @@ class Color(object):
     def __init__(self, r, g, b):
         # Setting the r value
         self.r = r
+        self.g = g
+        self.b = b
         
-        ## TODO: Set the other two color variables g and b
         
 
     # __repr__ is called when a color is printed using print(some_color)
@@ -28,7 +29,22 @@ class Color(object):
         ## TODO: Write a string representation for the color
         ## ex. "rgb = [self.r, self.g, self.b]"
         ## Right now this returns an empty string
-        string = ''
+        string = "R : {} | G : {} |  B : {}".format(self.r, self.g, self.b)
+        
+        return string
+    
+    def __add__(self,color2):
+        '''Display a color after adding two colors'''
+        
+        self.r = self.r + color2.r
+        self.g = self.g + color2.g
+        self.b = self.b + color2.b
+        plt.imshow([[(self.r/255, self.g/255, self.b/255)]])
+        
+        ## TODO: Write a string representation for the color
+        ## ex. "rgb = [self.r, self.g, self.b]"
+        ## Right now this returns an empty string
+        string = "R : {} | G : {} |  B : {}".format(self.r, self.g, self.b)
         
         return string
     
