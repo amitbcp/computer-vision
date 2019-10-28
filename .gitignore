@@ -1,3 +1,8 @@
+# Models
+*yolov3.weights*
+01_Image_Representation_Classification/1_5_CNN_Layers/data/processed/*
+01_Image_Representation_Classification/1_5_CNN_Layers/data/raw/*
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
