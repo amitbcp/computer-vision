@@ -1,0 +1,15 @@
+date-released: "2021-01-01"
+repository-code: "https://github.com/amitbcp/computer-vision"
+message: "If you use this software, please cite it as below."
+title: "EVALUATE GENERALISATION & ROBUSTNESS OF VISUAL FEATURES FROM IMAGES TO VIDEO"
+cff-version: "1.2.0"
+authors:
+  - family-names: "AGARWAL"
+    given-names: "AMIT"
+preferred-citation:
+  type: "article"
+  date-released: "2021-01-01"
+  title: "EVALUATE GENERALISATION & ROBUSTNESS OF VISUAL FEATURES FROM IMAGES TO VIDEO"
+  authors:
+    - family-names: "AGARWAL"
+      given-names: "AMIT"
