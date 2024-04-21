@@ -29,6 +29,7 @@ references:
     publisher:
       name: "Google Patents"
     institution:
-    number: "US Patent 11,823,478"
+      name: United States Patent and Trademark Office
+    number: "11823478"
     month: 11
     year: 2023
