@@ -1,18 +1,34 @@
 authors:
-  - family-names: Druskat
-    given-names: Stephan
+  - family-names: Agarwal
+    given-names: Amit
 cff-version: 1.2.0
-message: "If you use this software, please cite it using these metadata."
+message: "If you use this software, please cite both the article from preferred-citation and the software itself."
+title: "Master's Program and Thesis code"
+preferred-citation:
+  type: "article"
+  date-released: "2021-01-01"
+  title: "EVALUATE GENERALISATION & ROBUSTNESS OF VISUAL FEATURES FROM IMAGES TO VIDEO"
+  authors:
+    - family-names: "AGARWAL"
+      given-names: "AMIT"
+  doi: 10.13140/RG.2.2.33887.53928
 references:
   - authors:
-      - family-names: Spaaks
-        given-names: "Jurriaan H."
-    title: "The foundation of Research Software"
-    type: software
+      - family-names: Agarwal
+        given-names: Amit
+    title: "EVALUATE GENERALISATION & ROBUSTNESS OF VISUAL FEATURES FROM IMAGES TO VIDEO"
+    type: article
+    doi: 10.13140/RG.2.2.33887.53928
   - authors:
-      - family-names: Haines
-        given-names: Robert
-    title: "Ruby CFF Library"
-    type: software
-    version: 1.0
-title: "My Research Software"
+      - family-names: Agarwal
+        given-names: Amit
+      - family-names: Pachauri
+        given-names: Kulbhushan
+    title: "Pseudo labelling for key-value extraction from documents"
+    type: patent
+    publisher:
+      name: "Google Patents"
+    institution:
+    number: "US Patent 11,823,478"
+    month: 11
+    year: 2023
